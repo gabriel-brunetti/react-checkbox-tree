@@ -1,9 +1,9 @@
 # Executando o projeto
 
 Para executar o projeto em ambiente local, clonar o repositório para sua máquina e executar <br/>
-`npm install ou yarn istall`<br/>
+###`npm install ou yarn istall`<br/>
 para instalar as dependências, e em sequência <br/>
-`npm start ou yarn start`<br/>
+###`npm start ou yarn start`<br/>
 para iniciar o servidor local. <br/>
 
 Seguindo o padrão do React a porta utilizada é a 3000 <br/>
