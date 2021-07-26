@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-checkbox-tree/static/css/main.b881575c.chunk.css",
+    "main.js": "/react-checkbox-tree/static/js/main.7638ad88.chunk.js",
+    "main.js.map": "/react-checkbox-tree/static/js/main.7638ad88.chunk.js.map",
+    "runtime-main.js": "/react-checkbox-tree/static/js/runtime-main.f86cfb8a.js",
+    "runtime-main.js.map": "/react-checkbox-tree/static/js/runtime-main.f86cfb8a.js.map",
+    "static/js/2.ae092864.chunk.js": "/react-checkbox-tree/static/js/2.ae092864.chunk.js",
+    "static/js/2.ae092864.chunk.js.map": "/react-checkbox-tree/static/js/2.ae092864.chunk.js.map",
+    "index.html": "/react-checkbox-tree/index.html",
+    "static/css/main.b881575c.chunk.css.map": "/react-checkbox-tree/static/css/main.b881575c.chunk.css.map",
+    "static/js/2.ae092864.chunk.js.LICENSE.txt": "/react-checkbox-tree/static/js/2.ae092864.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f86cfb8a.js",
+    "static/js/2.ae092864.chunk.js",
+    "static/css/main.b881575c.chunk.css",
+    "static/js/main.7638ad88.chunk.js"
+  ]
+}
