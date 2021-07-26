@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useGlobalContext } from '../../context'
 import Item from '../Item/index'
+import './style.css'
 
-const List = () => {
-  const { people } = useGlobalContext()
+const List = ({ data, checked }) => {
+  const nestedItem = (item) => {
+    const children = Object.values(item.children)
+    return (
+      <Item key={item.id} item={item} children={children} isChecked={checked} />
+    )
+  }
 
-  return (
-    <>
-      <ul>
-        {people.map((item, id) => {
-          return (
-            <li key={id}>
-              <Item key={item.id} {...item} />
-            </li>
-          )
-        })}
-      </ul>
-    </>
-  )
+  return <>{data.map(nestedItem)}</>
 }
 
 export default List

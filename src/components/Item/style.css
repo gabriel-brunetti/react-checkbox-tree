@@ -6,3 +6,44 @@
 .collapsed {
   display: none;
 }
+
+.checkbox-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.list-container :first-child(.item-container):hover {
+  background-color: #dfdfdf;
+}
+
+.checkbox-container > span {
+  margin-left: 11px;
+}
+
+.checkbox-input {
+  width: 110%;
+}
+
+.icon {
+  font-size: 1rem;
+  margin: 0 0.8rem;
+  transition: transform 1s;
+}
+
+.icon.clicked {
+  transform: rotate(180deg);
+}
+
+.icon:focus,
+.icon:hover,
+.icon:active,
+.icon:visited {
+  color: rgb(255, 121, 11);
+}
+
+.item-container:hover {
+  background-color: #eee;
+}

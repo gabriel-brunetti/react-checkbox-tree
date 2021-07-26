@@ -4,45 +4,44 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import './style.css'
 
-const Item = ({ id, name, children }) => {
-  const [collapsed, setCollapsed] = useState(true)
+const Item = ({ item, children, isChecked }) => {
+  const [collapsed, setCollapsed] = useState(false)
   const [checked, setChecked] = useState(false)
-  const checkedIds = JSON.parse(localStorage.getItem('check')) || []
-
-  children = Object.entries(children).map((item) => {
-    return item[1]
-  })
 
   useEffect(() => {
-    const expandedIds = JSON.parse(localStorage.getItem('expanded')) || []
-    expandedIds.forEach((item) => {
-      if (item === id) {
+    const collapsedIDs = JSON.parse(localStorage.getItem('expanded')) || []
+
+    collapsedIDs.forEach((element) => {
+      if (element === item.id) {
         setCollapsed(false)
       }
     })
-  }, [id])
+  }, [item])
 
   useEffect(() => {
-    const expandedIds = JSON.parse(localStorage.getItem('expanded')) || []
+    let expandeds = JSON.parse(localStorage.getItem('expanded')) || []
     if (!collapsed) {
-      localStorage.setItem('expanded', JSON.stringify([...expandedIds, id]))
+      localStorage.setItem('expanded', JSON.stringify([...expandeds, item.id]))
     } else {
-      const items = expandedIds.filter((idEx) => idEx !== id)
+      const items = expandeds.filter((id) => id !== item.id)
       localStorage.setItem('expanded', JSON.stringify(items))
     }
-  }, [collapsed, id])
+  }, [collapsed, item])
 
   useEffect(() => {
+    setChecked(isChecked)
+  }, [isChecked])
+
+  useEffect(() => {
+    const checkedIds = JSON.parse(localStorage.getItem('check')) || []
     checkedIds.forEach((item) => {
-      if (item === id) {
+      if (item === item.id) {
         setChecked(true)
       }
     })
-  }, [checkedIds, id])
+  }, [item])
 
-  const toggleCollapse = (e) => {
-    setCollapsed((val) => !val)
-  }
+  const toggleCollapse = () => setCollapsed(!collapsed)
 
   const toggleChecked = () => {
     let checkedStatus = !checked
@@ -51,10 +50,10 @@ const Item = ({ id, name, children }) => {
     if (checkedStatus) {
       localStorage.setItem(
         'check',
-        JSON.stringify([...checkedItems, id, ...childrenId])
+        JSON.stringify([...checkedItems, item.id, ...childrenId])
       )
     } else {
-      let items = checkedItems.filter((idItem) => idItem !== id)
+      let items = checkedItems.filter((idItem) => idItem !== item.id)
       console.log(checkedItems)
       localStorage.setItem('check', JSON.stringify(items))
     }
@@ -62,28 +61,35 @@ const Item = ({ id, name, children }) => {
   }
 
   return (
-    <div className='item-container'>
-      <div className='checkbox-container' onClick={toggleChecked}>
-        <input
-          type='checkbox'
-          name='checkbox'
-          id='checkbox'
-          checked={checked}
-          onChange={() => setChecked(!checked)}
-        />
-        <span>{name}</span>
+    <li className='item-container'>
+      <div className='checkbox-container'>
+        <div className='checkbox-input' onClick={toggleChecked}>
+          <input
+            type='checkbox'
+            name='checkbox'
+            id='checkbox'
+            checked={checked}
+            onChange={() => setChecked(!checked)}
+          />
+          <span>{item.name}</span>
+        </div>
+        {children.length > 0 ? (
+          <FontAwesomeIcon
+            icon={faChevronDown}
+            onClick={toggleCollapse}
+            className={`icon ${collapsed ? 'clicked' : ''}`}
+          />
+        ) : (
+          ''
+        )}
       </div>
 
-      {children.length > 0 && (
-        <FontAwesomeIcon icon={faChevronDown} onClick={toggleCollapse} />
-      )}
-
-      <ul className={collapsed ? 'collapsed' : ''}>
-        {children.map((item, id) => {
-          return <li key={id}>oi'</li>
-        })}
+      <ul className={(collapsed ? 'collapsed' : '', 'nestedList-container')}>
+        {collapsed && children?.length > 0 && (
+          <List data={children} checked={checked} />
+        )}
       </ul>
-    </div>
+    </li>
   )
 }
 
