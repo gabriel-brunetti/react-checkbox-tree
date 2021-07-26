@@ -1,0 +1,8 @@
+.item-container,
+.checkbox-container {
+  display: inline-block;
+}
+
+.collapsed {
+  display: none;
+}
