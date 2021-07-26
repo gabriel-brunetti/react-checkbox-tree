@@ -1,12 +1,12 @@
 # Executando o projeto
 
-Para executar o projeto em ambiente local, clonar o repositório para sua máquina e executar \n
+Para executar o projeto em ambiente local, clonar o repositório para sua máquina e executar <br/>
 `npm install ou yarn istall`
-para instalar as dependências, e em sequência \n
+para instalar as dependências, e em sequência <br/>
 `npm start ou yarn start`
-para iniciar o servidor local. \n
+para iniciar o servidor local. <br/>
 
-Seguindo o padrão do React a porta utilizada é a 3000
+Seguindo o padrão do React a porta utilizada é a 3000 <br/>
 
 ## Demo/Deploy
 
